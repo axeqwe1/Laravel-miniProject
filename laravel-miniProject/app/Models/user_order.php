@@ -15,9 +15,13 @@ class user_order extends Model
 
         public function cart()
         {
+<<<<<<< HEAD
             return $this->hasMany(orders::class);
         }
         public function cart1(){
             return $this->hasMany(cart::class);
+=======
+            return $this->hasMany(user_order::class);
+>>>>>>> 5043a1bb82d7abcf4cebde3561373f701a5f2717
         }
 }
