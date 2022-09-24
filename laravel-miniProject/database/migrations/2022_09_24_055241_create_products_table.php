@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
             $table->string('product_id', 10);
             $table->string('product_name', 100);
             $table->text('product_detail');
@@ -22,8 +21,9 @@ return new class extends Migration
             $table->integer('product_qty');
             $table->text('product_pic');
             $table->text('product_note');
-            $table->integer('category_id');
+            $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
+
         });
     }
 
