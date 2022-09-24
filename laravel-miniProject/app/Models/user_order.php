@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class user_order extends Model
 {
@@ -14,7 +15,9 @@ class user_order extends Model
 
         public function cart()
         {
-            return $this->belongsTo(user_order::class);
+            return $this->hasMany(orders::class);
         }
-
+        public function cart1(){
+            return $this->hasMany(cart::class);
+        }
 }

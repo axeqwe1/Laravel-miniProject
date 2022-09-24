@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('product_qty');
             $table->text('product_pic');
             $table->text('product_note');
-            $table->integer('category_id');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();
         });
     }

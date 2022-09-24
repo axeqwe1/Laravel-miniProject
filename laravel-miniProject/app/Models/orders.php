@@ -21,6 +21,6 @@ class orders extends Model
         return $this->belongsTo(orders::class,'transfer_id','id');
     }
     public function user(){
-        return $this->belongsToMany(orders::class,'user_id','id');
+        return $this->belongsTo(orders::class,'user_id','id');
     }
 }
