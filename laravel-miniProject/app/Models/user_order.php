@@ -14,7 +14,7 @@ class user_order extends Model
 
         public function cart()
         {
-            return $this->belongsTo(user_order::class);
+            return $this->hasMany(user_order::class);
         }
 
 }
