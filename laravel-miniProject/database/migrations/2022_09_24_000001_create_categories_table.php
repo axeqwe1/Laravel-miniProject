@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cat_name',100);
             $table->timestamps();
         });
+
     }
 
     /**

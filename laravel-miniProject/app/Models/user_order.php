@@ -13,15 +13,11 @@ class user_order extends Model
     protected $fillable = ['user_id', 'user_fname', 'user_lname', 'user_username', 'user_password', 'user_sex',
      'user_address', 'user_bod', 'user_tel', 'user_email', 'role'];
 
-        public function cart()
+        public function orders()
         {
-<<<<<<< HEAD
             return $this->hasMany(orders::class);
         }
-        public function cart1(){
+        public function cart(){
             return $this->hasMany(cart::class);
-=======
-            return $this->hasMany(user_order::class);
->>>>>>> 5043a1bb82d7abcf4cebde3561373f701a5f2717
         }
 }

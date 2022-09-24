@@ -14,21 +14,29 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->int('id');
-            $table->string('con_order_id',15)->primary();
+            $table->integer('id');
+            $table->bigInteger('con_order_id')->primary()->unsigned();
             $table->string('buyer_fname', 100);
             $table->string('buyer_lname', 100);
             $table->text('buyer_address');
             $table->string('buyer_tel', 10);
             $table->string('buyer_email', 100);
             $table->string('con_status',1);
-            $table->foreign('transfer_id')->references('id')->on('transfer_money')->onDelete('cascade');
-            $table->dateTime('order_date')->default(new DateTime());
+            $table->bigInteger('transfer_id')->unsigned();
+            $table->foreign('transfer_id')->references('id')->on('transfer_moneys')->onDelete('cascade');
+            $table->dateTime('order_date');
             $table->integer('shipping_cost');
             $table->integer('total_price');
             $table->string('postal_number',10);
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('user_orders')->onDelete('cascade');
             $table->timestamps();
+        });
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->foreign('order_id')->references('con_order_id')->on('orders')->onDelete('cascade');
+        });
+        Schema::table('transfer_moneys', function (Blueprint $table) {
+            $table->foreign('con_order_id')->references('con_order_id')->on('orders')->onDelete('cascade');
         });
     }
 

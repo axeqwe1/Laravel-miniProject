@@ -14,13 +14,17 @@ class orders extends Model
     protected $table = 'orders';
 
 
-    public function orders(){
-        return $this->belongsTo(order::class);
+    public function order_item(){
+        return $this->hasMany(order_item::class);
     }
     public function transfer_money(){
-        return $this->belongsTo(orders::class,'transfer_id','id');
+        return $this->belongsTo(Transfer_money::class,'transfer_id','id');
+    }
+    public function transfer_money_id(){
+        return $this->belongTo(Transfer_money::class);
     }
     public function user(){
-        return $this->belongsTo(orders::class,'user_id','id');
+        return $this->belongsTo(user_order::class,'user_id','id');
     }
+
 }

@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('transfer_moneys', function (Blueprint $table) {
             $table->id();
-            $table->string('con_order_id', 15);
-            $table->dateTime('transfer_datetime')->default(new DateTime());
-            $table->integer('transfer_money')->default(12);
+            $table->bigInteger('con_order_id')->unsigned();
+            $table->dateTime('transfer_datetime');
+            $table->integer('transfer_money');
             $table->text('transfer_evidence');
             $table->string('transfer_staus', 1);
-            $table->foreign('con_order_id')->references('con_order_id')->on('orders')->onDelete('cascade');
+            // $table->bigInteger('con_order_id')->unsigned();
+            // $table->foreign('con_order_id')->references('con_order_id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }

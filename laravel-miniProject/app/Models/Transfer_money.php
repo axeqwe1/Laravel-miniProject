@@ -17,9 +17,9 @@ class Transfer_money extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function order()
+    public function orders()
     {
-        return $this->belongsTo(Transfer_money::class, 'con_order_id', 'con_order_id');
+        return $this->belongsTo(orders::class, 'con_order_id', 'con_order_id');
     }
 
     /**
@@ -27,8 +27,8 @@ class Transfer_money extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function order1()
+    public function orders1()
     {
-        return $this->belongsTo(Transfer_money::class);
+        return $this->belongsTo(orders::class);
     }
 }

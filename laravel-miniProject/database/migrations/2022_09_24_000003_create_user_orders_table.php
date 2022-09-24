@@ -20,12 +20,12 @@ return new class extends Migration
             $table->text('user_lname',100);
             $table->string('user_username',100);
             $table->text('user_password');
-            $table->varchar('user_sex',1);
+            $table->string('user_sex',1);
             $table->text('user_address');
             $table->date('user_bod');
-            $table->varchar('user_tel',10);
-            $table->varchar('user_email',100);
-            $table->varchar('role',1);
+            $table->string('user_tel',10);
+            $table->string('user_email',100);
+            $table->string('role',1);
 
         });
     }

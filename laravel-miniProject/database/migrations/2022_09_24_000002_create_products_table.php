@@ -14,21 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
+            $table->id();
             $table->string('product_id', 10);
             $table->string('product_name', 100);
+            $table->unsignedBigInteger('category_id');
             $table->text('product_detail');
             $table->integer('product_price');
             $table->integer('product_qty');
             $table->text('product_pic');
             $table->text('product_note');
-<<<<<<< HEAD
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
-=======
-            $table->foreign('category_id')->references('id')->on('category');
->>>>>>> 5043a1bb82d7abcf4cebde3561373f701a5f2717
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
 
         });
+        // Schema::table('products', function (Blueprint $table) {
+        //     $table->foreignId('category_id')->constrained();
+        // });
     }
 
     /**
@@ -38,6 +39,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('products',function(Blueprint $table){
+            $table->dropForeign('products_category_id_foreign');
+        });
         Schema::dropIfExists('products');
     }
 };

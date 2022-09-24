@@ -11,7 +11,13 @@ class category extends Model
     protected $table = "category";
     protected $fillable = ['cat_name'];
 
-    public function category()
+
+    /**
+     * Get the product that owns the category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function products()
     {
         return $this->hasMany(product::class);
     }
