@@ -25,7 +25,7 @@ class product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function category(): HasMany
+    public function category()
     {
         return $this->belongsToMany(product::class,'catogory_id','id');
     }
