@@ -20,9 +20,14 @@ class product extends Model
         'category_id'
 
     ];
-    public function category()
+    /**
+     * Get all of the category for the product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function category(): HasMany
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsToMany(product::class,'catogory_id','id');
     }
 
 
