@@ -15,8 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-
-        return view('category.index');
+        $category = category::all();
+        return view('category.index',compact('category'));
     }
 
     /**
@@ -39,9 +39,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $test = $request->all();
+        $input = $request->all();
+        category::create([
+            'cat_name' => $input['cat_name']
+        ]);
 
-
+        return redirect('category');
     }
 
     /**
@@ -50,9 +53,11 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show($id)
     {
         //
+        $categorys = category::find($id);
+        return view('category.show',compact('categorys'));
     }
 
     /**
@@ -61,9 +66,11 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
+    public function edit($id)
     {
         //
+        $category = category::find($id);
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -73,9 +80,14 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, $id)
     {
         //
+        $category = category::find($id);
+        $category->cat_name = $request->get('cat_name');
+        $category->save();
+
+        return redirect('category');
     }
 
     /**
@@ -84,8 +96,11 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy($id)
     {
         //
+        $destroy = category::find($id);
+        $destroy->delete();
+        return redirect('category');
     }
 }

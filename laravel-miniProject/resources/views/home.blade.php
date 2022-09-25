@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,6 +11,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a class="btn btn-primary" href="{{url('category')}}">category list</a><br>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
