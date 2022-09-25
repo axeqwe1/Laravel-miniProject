@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+// เปลี่ยนไปใช้ User.php
 class user_order extends Model
 {
     use HasFactory;

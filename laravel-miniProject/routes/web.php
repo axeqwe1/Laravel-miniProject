@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
 use App\Models\category;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +23,8 @@ Auth::routes();
 
 Route::resource('category',CategoryController::class);
 Route::resource('order', OrdersController::class);
+Route::resource('user',UserOrderController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
