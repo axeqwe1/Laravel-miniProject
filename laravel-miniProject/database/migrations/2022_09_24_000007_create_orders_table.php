@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('total_price');
             $table->string('postal_number',10);
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('user_orders')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::table('order_items', function (Blueprint $table) {
