@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transfer_money extends Model
 {
     use HasFactory;
-    protected $table = "transfer_money";
+    protected $table = "transfer_moneys";
     protected $fillable = ['con_order_id','transfer_datetime'
     ,'transfer_money','transfer_evidence','transfer_staus'];
 

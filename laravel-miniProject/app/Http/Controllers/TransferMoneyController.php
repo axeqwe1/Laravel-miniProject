@@ -14,7 +14,8 @@ class TransferMoneyController extends Controller
      */
     public function index()
     {
-        //
+        $TransferMoney = Transfer_money::all();
+        return view('Transfermoney.index',compact('TransferMoney'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TransferMoneyController extends Controller
      */
     public function create()
     {
-        //
+        return view('transfermoney.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class TransferMoneyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $input = $request->all();
+        TransferMoneyController::create([
+            'transfer_datetime' => $input['transfer_datetime'],
+            'transfer_money' => $input['transfer_money'],
+            'transfer_evidence' => $input['transfer_evidence'],
+            'transfer_staus' => $input['transfer_staus'],
+            'con_order_id' => $input['con_order_id'],
+        ]);
+
+        return redirect('transfermoney');
     }
 
     /**
@@ -44,9 +55,10 @@ class TransferMoneyController extends Controller
      * @param  \App\Models\Transfer_money  $transfer_money
      * @return \Illuminate\Http\Response
      */
-    public function show(Transfer_money $transfer_money)
+    public function show($id)
     {
-        //
+        $TransferMoney = Transfer_money::find($id);
+        return view('Transfermoney.show',compact('TransferMoney'));
     }
 
     /**
@@ -55,9 +67,10 @@ class TransferMoneyController extends Controller
      * @param  \App\Models\Transfer_money  $transfer_money
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transfer_money $transfer_money)
+    public function edit($id)
     {
-        //
+        $TransferMoney = Transfer_money::find($id);
+        return view('Transfermoney.edit',compact('TransferMoney'));
     }
 
     /**
@@ -67,19 +80,33 @@ class TransferMoneyController extends Controller
      * @param  \App\Models\Transfer_money  $transfer_money
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transfer_money $transfer_money)
+    public function update(Request $request, $id)
     {
-        //
+        $TransferMoney = Transfer_money::find($id);
+        $TransferMoney->transfer_datetime = $request->get('transfer_datetime');
+        $TransferMoney->transfer_money = $request->get('transfer_money');
+        $TransferMoney->transfer_evidence = $request->get('transfer_evidence');
+        $TransferMoney->transfer_stausv = $request->get('transfer_staus');
+        $TransferMoney->con_order_id = $request->get('con_order_id');
+
+        $TransferMoney->save();
+
+        return redirect('Transfermoney');
     }
 
-    /**
+        /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Transfer_money  $transfer_money
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transfer_money $transfer_money)
+    public function destroy($id)
     {
-        //
+        $destroy = Transfer_money::find($id);
+        $destroy->delete();
+        return redirect('Transfermoney');
     }
-}
+    }
+
+
+
