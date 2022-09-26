@@ -14,7 +14,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('orders.index');
+        $orders = orders::all();
+        return view('orders.index',compact('orders'));
     }
 
     /**
@@ -25,6 +26,7 @@ class OrdersController extends Controller
     public function create()
     {
         //
+        return view('orders.create');
     }
 
     /**
