@@ -6,11 +6,13 @@ use App\Http\Controllers\OrdersController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class orders extends Model
 {
     use HasFactory;
-    protected $fillable = ['id','con_order_id','buter_fname','buyer_lname','buyer_address','buyer_tel','buyer_email','con_status','transfer_id','order_date'];
+    protected $fillable = ['id','con_order_id','buyer_fname','buyer_lname','buyer_address','buyer_tel','buyer_email','con_status','transfer_id','order_date','user_id'];
     protected $table = 'orders';
 
 
@@ -25,6 +27,20 @@ class orders extends Model
     }
     public function user(){
         return $this->belongsTo(user_order::class,'user_id','id');
+    }
+    public static function boot(){
+        parent::boot();
+
+        self::creating(function($model){
+            // orders::orderBy('con_order_id','desc')->first()->con_order_id + 1;
+            // $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
+
+            $model->con_order_id = $model->max('con_order_id') + 1;
+            $model->id = $model->max('id') + 1;
+        });
+    }
+    public static function next(){
+        return static::max('con_order_id') + 1;
     }
 
 }

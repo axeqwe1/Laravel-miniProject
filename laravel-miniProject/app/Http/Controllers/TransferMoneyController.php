@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Transfer_money;
 use Illuminate\Http\Request;
-
+use App\Models\orders;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 class TransferMoneyController extends Controller
 {
     /**
@@ -38,12 +40,13 @@ class TransferMoneyController extends Controller
     {
         // dd($request->all());
         $input = $request->all();
-        TransferMoneyController::create([
+        $transferMoney = new Transfer_money();
+
+        Transfer_money::create([
             'transfer_datetime' => $input['transfer_datetime'],
             'transfer_money' => $input['transfer_money'],
             'transfer_evidence' => $input['transfer_evidence'],
             'transfer_staus' => $input['transfer_staus'],
-            'con_order_id' => $input['con_order_id'],
         ]);
 
         return redirect('transfermoney');

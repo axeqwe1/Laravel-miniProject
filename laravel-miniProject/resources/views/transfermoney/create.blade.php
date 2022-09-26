@@ -35,12 +35,6 @@
                             <small id="helpId" class="form-text text-muted">Transfer Staus</small>
                           </div>
 
-                          <div class="mb-3">
-                            <label for="" class="form-label">Con Order ID</label>
-                            <input type="text" class="form-control" name="con_order_id" id="con_order_id" placeholder="Con Order ID">
-                            <small id="helpId" class="form-text text-muted">Con Order ID</small>
-                          </div>
-
                         <button type="submit" class="btn btn-primary">ADD</button>
                     </form>
 

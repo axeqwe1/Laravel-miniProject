@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\orders;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Transfer_money;
 class OrdersController extends Controller
 {
     /**
@@ -26,7 +28,8 @@ class OrdersController extends Controller
     public function create()
     {
         //
-        return view('orders.create');
+        $transfer_id = Transfer_money::all();
+        return view('orders.create',compact('transfer_id'));
     }
 
     /**
@@ -38,6 +41,25 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         //
+        $id = Auth::user()->id;
+        $input = $request->all();
+
+        orders::create([
+            'id' => $input['id'],
+            'buyer_fname' => $input['buyer_fname'],
+            'buyer_lname' => $input['buyer_lname'],
+            'buyer_address' => $input['buyer_address'],
+            'buyer_tel' => $input['buyer_tel'],
+            'buyer_email' => $input['buyer_email'],
+            'con_status' => $input['con_status'],
+            'transfer_id' => $input['transfer_id'],
+            'order_date' => $input['order_date'],
+            'shipping_cost' => $input['shipping_cost'],
+            'total_price' => $input['total_price'],
+            'postal_number' => $input['postal_number'],
+            'user_id' => $id
+        ]);
+        return redirect('order');
     }
 
     /**

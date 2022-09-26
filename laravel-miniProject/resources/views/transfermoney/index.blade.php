@@ -22,14 +22,14 @@
                         <tbody>
                             @foreach ($TransferMoney as $TransferMoneys)
                           <tr>
-                            <th scope="row">{{$TransferMoney->id}}</th>
-                            <td>{{$TransferMoney->transfer_datetime}}</td>
-                            <td>{{$TransferMoney->transfer_money}}</td>
-                            <td>{{$TransferMoney->transfer_evidence}}</td>
-                            <td>{{$TransferMoney->transfer_staus}}</td>
-                            <td>{{$TransferMoney->con_order_id}}</td>
+                            <th scope="row">{{$TransferMoneys->id}}</th>
+                            <td>{{$TransferMoneys->transfer_datetime}}</td>
+                            <td>{{$TransferMoneys->transfer_money}}</td>
+                            <td>{{$TransferMoneys->transfer_evidence}}</td>
+                            <td>{{$TransferMoneys->transfer_staus}}</td>
+                            <td>{{$TransferMoneys->con_order_id}}</td>
                             <td>
-                                <form action="{{url('transfermoney/'.$TransferMoneys->id)}}" method="POST">
+                                <form action="{{url('TransferMoney/'.$TransferMoneys->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-warning" onclick="window.location='{{url('/transfermoney/'.$TransferMoneys->id.'/edit')}}'">Edit</button>

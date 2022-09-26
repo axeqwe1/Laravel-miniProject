@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body d-flex flex-column-reverse">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -14,6 +14,7 @@
                     @endif
                     <a class="btn btn-primary" href="{{url('category')}}">category list</a><br>
                     <a class="btn btn-primary" href="{{url('transfermoney')}}">transfermoney list</a><br>
+                    <a class="btn btn-primary" href="{{url('order')}}">order list</a><br>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
