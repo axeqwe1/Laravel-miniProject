@@ -25,6 +25,7 @@
                             <th scope="col">total_price</th>
                             <th scope="col">postal_number</th>
                             <th scope="col">user_id</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -45,11 +46,11 @@
                             <td>{{$orderss->postal_number}}</td>
                             <td>{{$orderss->user_id }}</td>
                             <td>
-                                <form action="{{url('category/'.$orderss->id)}}" method="POST">
+                                <form action="{{url('order/'.$orderss->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-warning" onclick="window.location='{{url('/category/'.$orderss->id.'/edit')}}'">Edit</button>
-                                    <button type="button" class="btn btn-primary" onclick="window.location='{{url('/category/'.$orderss->id)}}'">show</button>
+                                    <button type="button" class="btn btn-warning" onclick="window.location='{{url('/order/'.$orderss->id.'/edit')}}'">Edit</button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location='{{url('/order/'.$orderss->id)}}'">show</button>
                                     <button type="submit" class="btn btn-danger">delete</button>
                                 </form>
                             </td>

@@ -7,14 +7,9 @@
             <div class="card">
                 <div class="card-header">{{ __('Orders ADD') }}</div>
                 <div class="card-body">
-                    <form action="{{url('/order'.$orders->con_order_id)}}" method="POST">
+                    <form action="{{url('order/'.$orders->id)}}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="mb-3">
-                          <label for="" class="form-label">id</label>
-                          <input type="text" class="form-control" name="id" id="cat_name" placeholder="Category Name">
-                          <small id="helpId" class="form-text text-muted">id</small>
-                        </div>
                         <div class="mb-3">
                           <label for="" class="form-label">buyer_fname</label>
                           <input type="text" class="form-control" name="buyer_fname" id="buyer_fname" placeholder="Name">
@@ -42,41 +37,41 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">con_status</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>การจัดส่ง</option>
+                            <select class="form-select" name="con_status" aria-label="Default select example">
+                                <option selected value="2">ยังไม่ส่ง</option>
                                 <option value="1">ส่ง</option>
-                                <option value="2">ยังไม่ส่ง</option>
                             </select>
                             <small id="helpId" class="form-text text-muted">con_status</small>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">transfer_id</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>การจัดส่ง</option>
-                                <option value="1">ส่ง</option>
-                                <option value="2">ยังไม่ส่ง</option>
+                            <select class="form-select" name="transfer_id" aria-label="Default select example">
+                                <option selected>เลือก transfer_id</option>
+                                @foreach ($transfer_id as $items)
+                                <option value="{{$items->id}}">{{$items->id}}</option>
+                                @endforeach
                             </select>
                             <small id="helpId" class="form-text text-muted">transfer_id</small>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">order_date</label>
-                            <input type="date" class="form-control" name="buyer_address" id="buyer_address" placeholder="Address">
+                            <input type="date" class="form-control" name="order_date" id="buyer_address" placeholder="order_date">
                             <small id="helpId" class="form-text text-muted">order_date</small>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">shipping_cost</label>
-                            <input type="text" class="form-control" name="buyer_address" id="buyer_address" placeholder="Address">
+                            <input type="text" class="form-control" name="shipping_cost" id="buyer_address" placeholder="shipping_cost">
                             <small id="helpId" class="form-text text-muted">shipping_cost</small>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">total_price</label>
-                            <input type="text" class="form-control" name="buyer_address" id="buyer_address" placeholder="Address">
+                            <input type="text" class="form-control" name="total_price" id="buyer_address" placeholder="total_price">
                             <small id="helpId" class="form-text text-muted">total_price</small>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">postal_number</label>
-                            <input type="text" class="form-control" name="buyer_address" id="buyer_address" placeholder="Address">
-                            <small id="helpId" class="form-text text-muted">total_price</small>
+                            <input type="text" class="form-control" name="postal_number" id="buyer_address" placeholder="postal_number">
+                            <small id="helpId" class="form-text text-muted">postal_number</small>
                         </div>
                         <button type="submit" class="btn btn-primary">ADD</button>
                     </form>

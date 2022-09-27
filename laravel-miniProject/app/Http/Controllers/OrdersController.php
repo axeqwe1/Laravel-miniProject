@@ -45,7 +45,6 @@ class OrdersController extends Controller
         $input = $request->all();
 
         orders::create([
-            'id' => $input['id'],
             'buyer_fname' => $input['buyer_fname'],
             'buyer_lname' => $input['buyer_lname'],
             'buyer_address' => $input['buyer_address'],
@@ -61,7 +60,6 @@ class OrdersController extends Controller
         ]);
         return redirect('order');
     }
-
     /**
      * Display the specified resource.
      *
@@ -79,9 +77,12 @@ class OrdersController extends Controller
      * @param  \App\Models\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function edit(orders $orders)
+    public function edit($id)
     {
         //
+        $orders = orders::find($id);
+        $transfer_id = Transfer_money::all();
+        return view('orders.edit',compact('orders','transfer_id'));
     }
 
     /**
@@ -91,9 +92,22 @@ class OrdersController extends Controller
      * @param  \App\Models\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orders $orders)
+    public function update(Request $request, $id)
     {
         //
+        $orders = orders::find($id);
+        $orders->buyer_fname = $request->get('buyer_fname');
+        $orders->buyer_lname = $request->get('buyer_lname');
+        $orders->buyer_address = $request->get('buyer_address');
+        $orders->buyer_tel = $request->get('buyer_tel');
+        $orders->con_status = $request->get('con_status');
+        $orders->transfer_id = $request->get('transfer_id');
+        $orders->order_date = $request->get('order_date');
+        $orders->shipping_cost = $request->get('shipping_cost');
+        $orders->total_price = $request->get('total_price');
+        $orders->postal_number = $request->get('postal_number');
+        $orders->save();
+        return redirect('order');
     }
 
     /**
@@ -102,8 +116,11 @@ class OrdersController extends Controller
      * @param  \App\Models\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orders $orders)
+    public function destroy($id)
     {
         //
+        $destroy = orders::find($id);
+        $destroy->delete();
+        return redirect('order');
     }
 }
