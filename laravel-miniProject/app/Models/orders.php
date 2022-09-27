@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class orders extends Model
 {
     use HasFactory;
-    protected $fillable = ['id','con_order_id','buyer_fname','buyer_lname','buyer_address','buyer_tel','buyer_email','con_status','transfer_id','order_date','user_id'];
+    protected $fillable = ['id','con_order_id','buyer_fname','buyer_lname','buyer_address','buyer_tel','buyer_email','total_price','shipping_cost','con_status','transfer_id','order_date','user_id'];
     protected $table = 'orders';
-
 
     public function order_item(){
         return $this->hasMany(order_item::class);

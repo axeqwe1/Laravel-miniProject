@@ -43,7 +43,6 @@ class OrdersController extends Controller
         //
         $id = Auth::user()->id;
         $input = $request->all();
-
         orders::create([
             'buyer_fname' => $input['buyer_fname'],
             'buyer_lname' => $input['buyer_lname'],
@@ -66,9 +65,11 @@ class OrdersController extends Controller
      * @param  \App\Models\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(orders $orders)
+    public function show($id)
     {
         //
+        $orders = orders::find($id);
+        return view('orders.show', compact('orders'));
     }
 
     /**
