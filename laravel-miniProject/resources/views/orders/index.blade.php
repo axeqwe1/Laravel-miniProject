@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Category') }}</div>
+                <div class="card-header">{{ __('Orders') }}</div>
                 <div class="card-body">
                     <a class="btn btn-secondary" href="{{url('order/create')}}">Add Order</a>
                     <table class="table">

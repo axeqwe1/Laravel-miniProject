@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Orders ADD') }}</div>
+                <div class="card-header">{{ __('Orders Edit') }}</div>
                 <div class="card-body">
                     <form action="{{url('order/'.$orders->id)}}" method="POST">
                         @csrf
