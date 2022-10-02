@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transfer_money;
 use Illuminate\Http\Request;
 use App\Models\orders;
-use App\Models\User;
+use App\Models\user_order;
 use Illuminate\Support\Facades\DB;
 class TransferMoneyController extends Controller
 {
@@ -39,6 +39,7 @@ class TransferMoneyController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+
         $input = $request->all();
         $transferMoney = new Transfer_money();
 
