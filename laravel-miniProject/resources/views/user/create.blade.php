@@ -33,7 +33,7 @@
                           <input type="text" class="form-control" name="user_address" id="user_address" placeholder="User Address">
 
                           <label for="" class="form-label">User birth of date</label>
-                          <input type="text" class="date form-control" type="text" name="user_bod" id="user_bod">
+                          <input type="text" class="date form-control" type="date" name="user_bod" id="user_bod">
 
                           <label for="" class="form-label">User phone number</label>
                           <input type="text" class="form-control" name="user_tel" id="user_tel" placeholder="User Phone number">
