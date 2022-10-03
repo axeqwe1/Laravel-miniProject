@@ -52,6 +52,7 @@ class Transfer_money extends Model
                 $model->id = $model->max('id') + 1;
                 // $get = $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
 
+<<<<<<< HEAD
                 DB::transaction(function () {
                     $id= orders::next();
                     $tfID = Transfer_money::max('id');
@@ -65,4 +66,16 @@ class Transfer_money extends Model
         public static function next(){
             return static::max('id') + 1;
         }
+=======
+            DB::transaction(function () {
+                $id = orders::next();
+                $test = Transfer_money::all();
+                foreach($test as $item){
+                    $getId = $item->id;
+                }
+                $newModel = orders::create(['id' => $id,'user_id' => Auth::user()->id,'transfer_id'=>$getId]);
+                // DB::update('update orders set con_order_id = ?', [$newModel]);
+        });
+        });
+>>>>>>> 9c8c61fe58a5b0d452b6dc900731eda215870a4b
     }

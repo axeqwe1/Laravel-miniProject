@@ -71,7 +71,7 @@ class UserOrderController extends Controller
      * @param  \App\Models\user_order  $user_order
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_order $user_order)
+    public function edit($id)
     {
         //
         $user = user_order::find($id);
