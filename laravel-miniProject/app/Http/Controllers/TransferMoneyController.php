@@ -8,11 +8,6 @@ use App\Models\orders;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-<<<<<<< HEAD
-
-=======
-use Illuminate\Support\Facades\Auth;
->>>>>>> 9c8c61fe58a5b0d452b6dc900731eda215870a4b
 class TransferMoneyController extends Controller
 {
     /**
@@ -45,15 +40,9 @@ class TransferMoneyController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-<<<<<<< HEAD
         // $input = $request->all();
         // $maxTfId = Transfer_money::max('id');
         // $maxOrId = orders::max('con_order_id');
-=======
-
-        $input = $request->all();
-        $transferMoney = new Transfer_money();
->>>>>>> 9c8c61fe58a5b0d452b6dc900731eda215870a4b
 
         // $transferMoney = new Transfer_money();
         // $transferMoney->create([
