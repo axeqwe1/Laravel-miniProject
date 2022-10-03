@@ -42,27 +42,27 @@ class Transfer_money extends Model
             return $this->hasOne(orders::class, 'transfer_id', 'id');
         }
 
-        public static function boot(){
-            parent::boot();
+        // public static function boot(){
+        //     parent::boot();
 
-            static::creating(function($model){
-                // orders::orderBy('con_order_id','desc')->first()->con_order_id + 1;
-                // $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
-                $model->con_order_id = $model->max('con_order_id') + 1;
-                $model->id = $model->max('id') + 1;
-                // $get = $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
+        //     static::creating(function($model){
+        //         // orders::orderBy('con_order_id','desc')->first()->con_order_id + 1;
+        //         // $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
+        //         $model->con_order_id = $model->max('con_order_id') + 1;
+        //         $model->id = $model->max('id') + 1;
+        //         // $get = $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
 
-                DB::transaction(function () {
-                    $id= orders::next();
-                    $tfID = Transfer_money::max('id');
-                    $newModel = orders::create(['id' => $id,'user_id' => Auth::user()->id,'transfer_id' => $tfID]);
-                    // DB::update('update orders set con_order_id = ?', [$newModel]);
-            });
-            // DB::insert('insert into orders (id,con_order_id,user_id) values (?,?,?)', [1,Auth::user()->id,$get]);
-            });
-        }
+        //         DB::transaction(function () {
+        //             $id= orders::next();
+        //             $tfID = Transfer_money::max('id');
+        //             $newModel = orders::create(['id' => $id,'user_id' => Auth::user()->id,'transfer_id' => $tfID]);
+        //             // DB::update('update orders set con_order_id = ?', [$newModel]);
+        //     });
+        //     // DB::insert('insert into orders (id,con_order_id,user_id) values (?,?,?)', [1,Auth::user()->id,$get]);
+        //     });
+        // }
 
-        public static function next(){
-            return static::max('id') + 1;
-        }
+        // public static function next(){
+        //     return static::max('id') + 1;
+        // }
     }
