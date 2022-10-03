@@ -45,11 +45,14 @@ class Transfer_money extends Model
             // $get = $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
 
             DB::transaction(function () {
-                $id= orders::next();
-                $newModel = orders::create(['id' => $id,'user_id' => Auth::user()->id]);
+                $id = orders::next();
+                $test = Transfer_money::all();
+                foreach($test as $item){
+                    $getId = $item->id;
+                }
+                $newModel = orders::create(['id' => $id,'user_id' => Auth::user()->id,'transfer_id'=>$getId]);
                 // DB::update('update orders set con_order_id = ?', [$newModel]);
         });
-        // DB::insert('insert into orders (id,con_order_id,user_id) values (?,?,?)', [1,Auth::user()->id,$get]);
         });
     }
 

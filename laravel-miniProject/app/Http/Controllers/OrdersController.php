@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\user_order;
+use App\Models\User;
 use App\Models\Transfer_money;
 class OrdersController extends Controller
 {

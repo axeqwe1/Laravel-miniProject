@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Transfer_money;
 use Illuminate\Http\Request;
 use App\Models\orders;
-use App\Models\user_order;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class TransferMoneyController extends Controller
 {
     /**
