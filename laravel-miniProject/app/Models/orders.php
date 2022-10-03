@@ -33,9 +33,18 @@ class orders extends Model
         self::creating(function($model){
             // orders::orderBy('con_order_id','desc')->first()->con_order_id + 1;
             // $model->con_order_id = orders::where('con_order_id',$model->con_order_id)->max('con_order_id') + 1;
-
             $model->con_order_id = $model->max('con_order_id') + 1;
             $model->id = $model->max('id') + 1;
+            // $getId = $model->transfer_id;
+            // if(isset($getId)){
+            //     $model->transfer_id = Transfer_money::max('id');
+            // }else{
+            //     DB::transaction(function () {
+            //         $id = orders::next();
+            //         DB::update('update orders set transfer_id = ?',[$id]);
+            //     });
+            // }
+
         });
     }
     public static function next(){

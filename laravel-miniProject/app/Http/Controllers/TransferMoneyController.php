@@ -6,7 +6,9 @@ use App\Models\Transfer_money;
 use Illuminate\Http\Request;
 use App\Models\orders;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class TransferMoneyController extends Controller
 {
     /**
@@ -39,16 +41,31 @@ class TransferMoneyController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $input = $request->all();
-        $transferMoney = new Transfer_money();
+        // $input = $request->all();
+        // $maxTfId = Transfer_money::max('id');
+        // $maxOrId = orders::max('con_order_id');
 
+        // $transferMoney = new Transfer_money();
+        // $transferMoney->create([
+        //     'transfer_datetime' => $input['transfer_datetime'],
+        //     'transfer_money' => $input['transfer_money'],
+        //     'transfer_evidence' => $input['transfer_evidence'],
+        //     'transfer_staus' => $input['transfer_staus'],
+        //     'con_order_id' => $maxOrId + 1
+        // ])->orders1()->create([
+        //     'user_id' => Auth::user()->id,
+        //     'con_order_id' => $maxOrId + 1,
+        //     'id' => $maxOrId + 1,
+        // ]);
+        $input = $request->all();
         Transfer_money::create([
             'transfer_datetime' => $input['transfer_datetime'],
             'transfer_money' => $input['transfer_money'],
             'transfer_evidence' => $input['transfer_evidence'],
             'transfer_staus' => $input['transfer_staus'],
-        ]);
 
+        ]);
+        // $transferMoney->refresh();
         return redirect('transfermoney');
     }
 
