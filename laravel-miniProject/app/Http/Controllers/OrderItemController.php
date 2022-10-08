@@ -14,7 +14,8 @@ class OrderItemController extends Controller
      */
     public function index()
     {
-        //
+        $orderitem = order_item::all();
+        return view('orderitem.index',compact('orderitem'));
     }
 
     /**
@@ -24,7 +25,7 @@ class OrderItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('orderitem.create');
     }
 
     /**
@@ -35,7 +36,6 @@ class OrderItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -46,7 +46,6 @@ class OrderItemController extends Controller
      */
     public function show(order_item $order_item)
     {
-        //
     }
 
     /**
@@ -57,7 +56,6 @@ class OrderItemController extends Controller
      */
     public function edit(order_item $order_item)
     {
-        //
     }
 
     /**
@@ -80,6 +78,5 @@ class OrderItemController extends Controller
      */
     public function destroy(order_item $order_item)
     {
-        //
     }
 }

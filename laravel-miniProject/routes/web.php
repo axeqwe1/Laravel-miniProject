@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
 use App\Models\category;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\TransferMoneyController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,7 @@ Route::resource('category',CategoryController::class);
 Route::resource('order', OrdersController::class);
 Route::resource('user',UserOrderController::class);
 Route::resource('transfermoney',TransferMoneyController::class);
+Route::resource('orderitem',OrderItemController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
