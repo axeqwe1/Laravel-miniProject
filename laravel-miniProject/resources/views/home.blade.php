@@ -16,6 +16,7 @@
                     <a class="btn btn-primary" href="{{url('transfermoney')}}">transfermoney list</a><br>
                     <a class="btn btn-primary" href="{{url('order')}}">order list</a><br>
                     <a class="btn btn-primary" href="{{url('orderitem')}}">Order Item</a><br>
+                    <a class="btn btn-primary" href="{{url('user')}}">User Order</a><br>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
