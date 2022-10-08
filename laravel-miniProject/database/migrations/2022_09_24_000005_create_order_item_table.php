@@ -18,9 +18,9 @@ return new class extends Migration
             $table->bigInteger('order_id')->unsigned();
             $table->bigInteger('order_p_id')->unsigned();
             $table->bigInteger('order_p_qty')->unsigned();
-            $table->foreign('order_p_id')->references('id')->on('products')->onDelete('cascade');
-            $table->bigInteger('order_p_total_price')->unsigned();
-            $table->integer('user_id');
+ //           $table->foreign('order_p_id')->references('id')->on('products')->onDelete('cascade');
+            $table->bigInteger('order_p_total_price')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
 

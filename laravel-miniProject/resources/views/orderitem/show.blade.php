@@ -24,7 +24,7 @@
                             <td>{{$order_items->order_id}}</td>
                             <td>{{$order_items->order_p_id}}</td>
                             <td>{{$order_items->order_p_qty}}</td>
-                            <td>{{$order_items->user_id }}</td>
+                            <td>{{$order_items->order_p_total_price}}</td>
                           </tr>
                         </tbody>
                       </table>

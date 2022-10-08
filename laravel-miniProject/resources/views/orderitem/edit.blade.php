@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Orders Edit') }}</div>
                 <div class="card-body">
-                    <form action="{{url('orderitem/'.$orders->id)}}" method="POST">
+                    <form action="{{url('orderitem/'.$orderitem->id)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -30,7 +30,7 @@
                             <input type="text" class="form-control" name="order_p_total_price" id="order_p_total_price" placeholder="Order product total price">
                             <small id="helpId" class="form-text text-muted">Order product total price</small>
                           </div>
-                        <button type="submit" class="btn btn-primary">ADD</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
 
                 </div>

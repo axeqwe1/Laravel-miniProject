@@ -84,6 +84,7 @@ class OrderItemController extends Controller
         $order_items->order_p_qty = $request->get('order_p_qty');
         $order_items->order_p_total_price = $request->get('order_p_total_price');
         $order_items->save();
+        return redirect('orderitem');
     }
 
     /**
