@@ -45,7 +45,7 @@ class OrderItemController extends Controller
      */
     public function show(order_item $order_item)
     {
-        
+
     }
 
     /**
