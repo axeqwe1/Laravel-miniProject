@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\order_item;
 use Illuminate\Http\Request;
-
 class OrderItemController extends Controller
 {
     /**
@@ -46,6 +45,7 @@ class OrderItemController extends Controller
      */
     public function show(order_item $order_item)
     {
+        
     }
 
     /**
