@@ -11,6 +11,11 @@
                         @csrf
                         @method('POST')
                         <div class="mb-3">
+                            <label for="" class="form-label">Order id</label>
+                            <input type="text" class="form-control" name="order_id" id="order_id" placeholder="Order Id">
+                            <small id="helpId" class="form-text text-muted">Order id</small>
+                          </div>
+                        <div class="mb-3">
                           <label for="" class="form-label">Order product id</label>
                           <input type="text" class="form-control" name="order_p_id" id="order_p_id" placeholder="Order Product Id">
                           <small id="helpId" class="form-text text-muted">Order product id</small>

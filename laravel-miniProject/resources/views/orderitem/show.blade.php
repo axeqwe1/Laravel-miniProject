@@ -16,8 +16,6 @@
                             <th scope="col">order_p_id</th>
                             <th scope="col">order_p_qty</th>
                             <th scope="col">order_p_total_price</th>
-                            <th scope="col">user_id</th>
-                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>

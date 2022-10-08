@@ -35,6 +35,14 @@ class OrderItemController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        order_item::create([
+            'order_id' =>$input['order_id'],
+            'order_p_id' =>$input['order_p_id'],
+            'order_p_qty'=>$input['order_p_qty'],
+            'order_p_total_price' =>$input['order_p_total_price']
+        ]);
+        return redirect('orderitem');
     }
 
     /**
@@ -43,9 +51,10 @@ class OrderItemController extends Controller
      * @param  \App\Models\order_item  $order_item
      * @return \Illuminate\Http\Response
      */
-    public function show(order_item $order_item)
+    public function show($id)
     {
-
+        $order_items = order_item::find($id);
+        return view('orderitem.show',compact('order_items'));
     }
 
     /**
@@ -54,8 +63,10 @@ class OrderItemController extends Controller
      * @param  \App\Models\order_item  $order_item
      * @return \Illuminate\Http\Response
      */
-    public function edit(order_item $order_item)
+    public function edit($id)
     {
+        $orderitem = order_item::find($id);
+        return view('orderitem.edit',compact('orderitem'));
     }
 
     /**
@@ -65,9 +76,14 @@ class OrderItemController extends Controller
      * @param  \App\Models\order_item  $order_item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order_item $order_item)
+    public function update(Request $request,$id)
     {
-        //
+        $order_items = order_item::find($id);
+        $order_items->order_id = $request->get('order_id');
+        $order_items->order_p_id = $request->get('order_p_id');
+        $order_items->order_p_qty = $request->get('order_p_qty');
+        $order_items->order_p_total_price = $request->get('order_p_total_price');
+        $order_items->save();
     }
 
     /**
@@ -76,7 +92,10 @@ class OrderItemController extends Controller
      * @param  \App\Models\order_item  $order_item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order_item $order_item)
+    public function destroy($id)
     {
+        $destroy = order_item::find($id);
+        $destroy->delete();
+        return redirect('orderitem');
     }
 }
