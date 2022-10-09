@@ -58,7 +58,7 @@ class CartController extends Controller
     {
         //
         $cart = cart::find($id);
-        return view('cart.show', compact('cart'));
+        return view('cart.show', compact('carts'));
     }
 
     /**
