@@ -11,9 +11,6 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="" class="form-label">User ID</label>
-                            <input type="text" class="form-control" name="user_id" id="user_id" placeholder="User ID">
-
                             <label for="" class="form-label">User Firstname</label>
                             <input type="text" class="form-control" name="user_fname" id="user_fname" placeholder="User firstname">
 
@@ -26,9 +23,6 @@
                           <label for="" class="form-label">User Password</label>
                           <input type="password" class="form-control" name="user_password" id="user_password" placeholder="User Password">
 
-                          <label for="" class="form-label">User Gender</label>
-                          <input type="text" class="form-control" name="user_sex" id="user_sex" placeholder="User Gender">
-
                           <label for="" class="form-label">User Address</label>
                           <input type="text" class="form-control" name="user_address" id="user_address" placeholder="User Address">
 
@@ -40,9 +34,6 @@
 
                           <label for="" class="form-label">User Email</label>
                           <input type="text" class="form-control" name="user_email" id="user_email" placeholder="User Email">
-
-                          <label for="" class="form-label">Role</label>
-                          <input type="text" class="form-control" name="role" id="role" placeholder="Role">
 
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="window.location='{{url('/user/')}}'">Edit</button>
